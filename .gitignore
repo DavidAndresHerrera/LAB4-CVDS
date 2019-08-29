@@ -1,6 +1,6 @@
 target/
-bin/
-.project
+*.jar
+
 .vscode/
 .classpath
 .project
