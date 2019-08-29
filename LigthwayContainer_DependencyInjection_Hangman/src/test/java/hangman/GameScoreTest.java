@@ -46,8 +46,8 @@ public class GameScoreTest {
 		valorFrontera = puntaje.calculateScore(0,0);
 		valorSuperior = puntaje.calculateScore(2,0);
 		
-		//Assert.assertEquals(0,valorInferior);
-		//Assert.assertEquals(0,valorFrontera);
+		Assert.assertEquals(0,valorInferior);
+		Assert.assertEquals(0,valorFrontera);
 		Assert.assertEquals(30,valorSuperior);
 	}
 	
@@ -61,8 +61,8 @@ public class GameScoreTest {
 		valorSuperior = puntaje.calculateScore(4,10);
 		
 		Assert.assertEquals(155,valorInferior);
-		//Assert.assertEquals(500,valorFrontera);
-		//Assert.assertEquals(500,valorSuperior);
+		Assert.assertEquals(500,valorFrontera);
+		Assert.assertEquals(500,valorSuperior);
 	}
 
 }
