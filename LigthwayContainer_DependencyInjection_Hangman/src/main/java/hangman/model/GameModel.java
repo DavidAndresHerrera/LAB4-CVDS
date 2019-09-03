@@ -13,9 +13,14 @@
 package hangman.model;
 
 import hangman.model.dictionary.HangmanDictionary;
+import hangman.setup.guice.HangmanFactoryServices;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 
 public class GameModel {
@@ -35,6 +40,9 @@ public class GameModel {
     
    
     public GameModel(HangmanDictionary dictionary){
+    	Injector injector = Guice.createInjector(new HangmanFactoryServices());
+    	GameScore application = injector.getInstance(GameScore.class);
+    	
         //this.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
         randomWord = selectRandomWord();

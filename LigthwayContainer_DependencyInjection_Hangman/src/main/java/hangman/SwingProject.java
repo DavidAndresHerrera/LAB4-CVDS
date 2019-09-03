@@ -46,6 +46,7 @@ public class SwingProject {
 
     public static GUI createGUIUsingFactoryMethod() {
         return new GUI(new HangmanDefaultFactoryMethod());
+    	
     }
 
     public static GUI createGUIUsingGuice() {
