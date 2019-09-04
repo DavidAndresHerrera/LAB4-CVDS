@@ -11,6 +11,7 @@
 ****************************************************************/ 
 package hangman.view;
 
+import com.google.inject.Inject;
 import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.Graphics;

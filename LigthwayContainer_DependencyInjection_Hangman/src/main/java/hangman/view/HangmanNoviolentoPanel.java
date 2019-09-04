@@ -11,6 +11,7 @@
  *************************************************************** */
 package hangman.view;
 
+import com.google.inject.Inject;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,7 +21,7 @@ import javax.swing.JPanel;
 public class HangmanNoviolentoPanel extends HangmanPanel {
 
     int incorrectCount;
-
+    @Inject
     public HangmanNoviolentoPanel() {
         incorrectCount = 0;
     }
