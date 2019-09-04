@@ -5,6 +5,7 @@
  */
 package hangman.view;
 
+import com.google.inject.Inject;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -13,6 +14,11 @@ import javax.swing.JPanel;
  * @author 2106913
  */
 public abstract class HangmanPanel extends JPanel{
+    
+    @Inject
+    public HangmanPanel(){
+    }
+    
      @Override
      public void paint(Graphics g){
          super.paint(g);

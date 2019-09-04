@@ -54,5 +54,11 @@
 			<artifactId>guice</artifactId>
 			<version>4.2.2</version>
 		</dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

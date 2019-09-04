@@ -1,18 +1,27 @@
 package hangman.model;
 
-public class BonusScore implements GameScore {
+import com.google.inject.Inject;
 
+public class BonusScore implements GameScore {
+        private int score;
+        
+        @Inject
+        public BonusScore(){
+            score=0;
+        }
+    
+    
 	@Override
 	public int calculateScore(int correctCount, int incorrectCount) {
-		int puntaje = 0;
+		//int puntaje = 0;
 		if (correctCount > 0) {
-			puntaje += (10)*correctCount;
+			score += (10)*correctCount;
 		}
 		if (incorrectCount > 0)
 		{
-			puntaje -= 5*incorrectCount;
+			score -= 5*incorrectCount;
 		}
-		if (puntaje > 0) return puntaje;
+		if (score > 0) return score;
 		return 0;
 	}
 

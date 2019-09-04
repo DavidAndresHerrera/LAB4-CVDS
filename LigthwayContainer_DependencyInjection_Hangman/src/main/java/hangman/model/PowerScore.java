@@ -1,21 +1,29 @@
 package hangman.model;
 
-public class PowerScore implements GameScore {
+import com.google.inject.Inject;
 
+public class PowerScore implements GameScore {
+        private int score;
+        
+        @Inject
+        public  PowerScore(){
+            score=0;
+        }
+       
 	@Override
 	public int calculateScore(int correctCount, int incorrectCount) {
-		int puntaje = 0;
+		//int puntaje = 0;
 		for (int i = 0; i < correctCount; i++) {
-			puntaje += Math.pow(5,i+1);
-			System.out.println(puntaje+ " "+i);
+			score += Math.pow(5,i+1);
+			System.out.println(score+ " "+i);
 		}
-		puntaje -= incorrectCount*8;
-		System.out.println(puntaje+" re");
-		if (puntaje > 500) {
+		score -= incorrectCount*8;
+		System.out.println(score+" re");
+		if (score > 500) {
 			return 500;
 		}
-		else if (puntaje > 0 ) {
-			return puntaje;
+		else if (score > 0 ) {
+			return score;
 		}
 		return 0;
 	}
