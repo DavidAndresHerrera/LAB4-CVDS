@@ -6,7 +6,6 @@ import hangman.model.dictionary.HangmanDictionary;
 public class OriginalScore implements GameScore {
         private int score;
     
-        @Inject
         public OriginalScore(){
             score=100;
         }

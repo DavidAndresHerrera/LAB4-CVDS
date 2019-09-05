@@ -27,7 +27,7 @@ public class GameModel {
     private int incorrectCount;
     private int correctCount;
     private LocalDateTime dateTime;
-    private int gameScore;
+    private GameScore gameScore;
     private int[] lettersUsed;
     
     
@@ -40,16 +40,15 @@ public class GameModel {
     
    
     public GameModel(HangmanDictionary dictionary){
-    	Injector injector = Guice.createInjector(new HangmanFactoryServices());
-    	GameScore application = injector.getInstance(GameScore.class);
+    	Injector in = Guice.createInjector(new HangmanFactoryServices());
     	
-        //this.dictionary = new EnglishDictionaryDataSource();
+        //his.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = in.getInstance(GameScore.class);
         
     }
     
@@ -60,7 +59,9 @@ public class GameModel {
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        
+        Injector in = Guice.createInjector(new HangmanFactoryServices());
+        gameScore = in.getInstance(GameScore.class);
     }
 
     //setDateTime
@@ -82,7 +83,7 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
+            
         } else {
             correctCount += positions.size();
         }
@@ -99,14 +100,19 @@ public class GameModel {
 
     //setScore
     //purpose: sets score value to points
-    public void setScore(int score) {
+    public void setScore(GameScore score) {
         this.gameScore = score;
     }
     
     //getScore
     //purpose: returns current score value
     public int getScore() {
-        return gameScore;
+        try{
+            return  gameScore.calculateScore(correctCount, incorrectCount);
+        }
+        catch(Exception  e){
+            return 0;
+        }
     }
 
     //name: selectRandomWord()
@@ -132,12 +138,18 @@ public class GameModel {
     //method: getGameScore
     //purpose: return current score
     public int getGameScore() {
-        return gameScore;
+        
+        try{
+            return  gameScore.calculateScore(correctCount, incorrectCount);
+        }
+        catch(Exception  e){
+            return 0;
+        }
     }
 
     //method: setGameScore
     //purpose: set current game score
-    public void setGameScore(int gameScore) {
+    public void setGameScore(GameScore gameScore) {
         this.gameScore = gameScore;
     }
     
